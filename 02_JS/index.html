@@ -11,7 +11,12 @@
     <div id="todos"></div>
     <form action="">
       <input type="text" id="todo-title" />
-      <input type="button" value="Submit" />
+      <select name="todo-priority" id="todo-priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <input type="button" value="Submit" onclick="addTodo()" />
     </form>
     <script src="index.js"></script>
   </body>
