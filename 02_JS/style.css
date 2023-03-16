@@ -1,0 +1,15 @@
+li {
+  font-size: medium;
+}
+
+.high {
+  color: red;
+}
+
+.medium {
+  color: orange;
+}
+
+.low {
+  color: green;
+}
