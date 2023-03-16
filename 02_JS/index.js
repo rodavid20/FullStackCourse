@@ -21,7 +21,6 @@ const render = () => {
   //   }
   todos.forEach((todo) => {
     const todo_li = document.createElement("li");
-    todo_li.id = todo.id;
     todo_li.innerText = todo.title;
     todo_li.className = todo.priority;
     const deleteButton = document.createElement("button");
@@ -35,10 +34,10 @@ const render = () => {
 };
 
 const addTodo = () => {
-  const id = new Date().getTime() + "";
-  const title = document.getElementById("todo-title").value;
-  const priority = document.getElementById("todo-priority").value;
-  todos.push({ id: id, title: title, priority: priority });
+  const todo_id = new Date().getTime() + "";
+  const todo_title = document.getElementById("todo-title").value;
+  const todo_priority = document.getElementById("todo-priority").value;
+  todos.push({ id: todo_id, title: todo_title, priority: todo_priority });
   localStorage.setItem("todos", JSON.stringify(todos));
   render();
 };
