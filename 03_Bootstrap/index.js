@@ -10,9 +10,8 @@ function render() {
 
 const render = () => {
   todos = JSON.parse(localStorage.getItem("todos") ?? []);
-  const todos_div = document.getElementById("todos");
+  const todos_div = document.getElementById("todos_tbody");
   todos_div.innerHTML = "";
-  const todo_ul = document.createElement("ul");
 
   //   for (let i = 0; i < todos.length; i++) {
   //     let todo_li = document.createElement("li");
@@ -20,18 +19,21 @@ const render = () => {
   //     todo_ul.append(todo_li);
   //   }
   todos.forEach((todo) => {
-    const todo_li = document.createElement("li");
-    todo_li.id = todo.id;
-    todo_li.innerText = todo.title;
-    todo_li.className = todo.priority;
+    const todo_tr = document.createElement("tr");
+    const todo_li1 = document.createElement("td");
+    todo_li1.innerText = todo.title;
+    todo_li1.className = todo.priority;
+    const todo_li2 = document.createElement("td");
+
     const deleteButton = document.createElement("button");
     deleteButton.id = todo.id;
-    deleteButton.innerText = "Delete";
+    deleteButton.className = "fa fa-trash";
     deleteButton.onclick = deleteTodo;
-    todo_li.appendChild(deleteButton);
-    todo_ul.append(todo_li);
+    todo_li2.appendChild(deleteButton);
+    todo_tr.append(todo_li1);
+    todo_tr.append(todo_li2);
+    todos_div.appendChild(todo_tr);
   });
-  todos_div.append(todo_ul);
 };
 
 const addTodo = () => {
