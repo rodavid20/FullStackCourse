@@ -3,7 +3,7 @@ let todos = [];
 
 /*
 function render() {
-  const todos_tbody = document.getElementById("todos");
+  const todos_div = document.getElementById("todos");
   console.log("inside");
 }
 */
@@ -52,6 +52,7 @@ const render = () => {
     todo_tr.append(delete_td);
     todos_tbody.appendChild(todo_tr);
   });
+  generateChart(todos);
 };
 
 const addTodo = () => {

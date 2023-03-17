@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Demo</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .high {
+        color: brown;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 style="color: blue">Todo List</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead></thead>
+              <tbody id="todos_tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <!-- Create a div where the graph will take place -->
+          <div id="my_dataviz"></div>
+        </div>
+      </div>
+      <div class="row">
+        <form action="">
+          <input type="text" id="todo-title" />
+          <select name="todo-priority" id="todo-priority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <input type="button" value="Submit" onclick="addTodo()" />
+        </form>
+      </div>
+      <div class="row"></div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="charts.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
