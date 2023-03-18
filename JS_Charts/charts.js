@@ -16,7 +16,8 @@ generateChart = (data) => {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  //{ high : 10, medium = 10}
+  // data = [{title: 'abc', priority:'high'}, {title: 'xyz', priority:'medium'}]
+  //grouped_data ={ high : 1, medium : 1}
   grouped_data = data.reduce((acc, obj) => {
     const key = obj.priority;
 
