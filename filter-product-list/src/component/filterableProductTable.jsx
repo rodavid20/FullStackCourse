@@ -2,26 +2,45 @@ import React, { useState } from "react";
 
 const FilterableProductTable = ({ products }) => {
   const [searchText, setSearchText] = useState("");
-
+  const [isStock, isStockChecked] = useState(false);
   return (
     <>
       <SearchBar
         searchText={searchText}
-        handleSearchChange={setSearchText}
+        isStock={isStock}
+        onSearchTextChange={setSearchText}
+        onIsStockChecked={isStockChecked}
       ></SearchBar>
-      <ProductTable products={products} searchText={searchText} />;
+      <ProductTable
+        products={products}
+        searchText={searchText}
+        isStock={isStock}
+      />
     </>
   );
 };
 
-const SearchBar = ({ searchText, onFilterTextChange }) => {
+const SearchBar = ({
+  searchText,
+  isStock,
+  onSearchTextChange,
+  onIsStockChecked,
+}) => {
   return (
-    <input
-      type="text"
-      placeholder="search..."
-      value={searchText}
-      onChange={(e) => onFilterTextChange(e.target.value)}
-    />
+    <form>
+      <input
+        type="text"
+        placeholder="search..."
+        value={searchText}
+        onChange={(e) => onSearchTextChange(e.target.value)}
+      />
+      <input
+        type="checkbox"
+        checked={isStock}
+        onChange={(e) => onIsStockChecked(e.target.checked)}
+      />{" "}
+      Search for Products with Stock
+    </form>
   );
 };
 
@@ -47,20 +66,22 @@ const ProductRow = ({ product }) => {
   );
 };
 
-const ProductTable = ({ products, searchText }) => {
+const ProductTable = ({ products, searchText, isStock }) => {
   let rows = [];
   let lastCategory = "";
   products.forEach((p) => {
-    if (
-      (searchText === "" ||
-      p.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) && 
-      (p.name !== "")
-    ) {
-      if (p.category !== lastCategory) {
-        rows.push(<ProductCategory category={p.category}></ProductCategory>);
-        lastCategory = p.category;
+    if (!isStock || p.isStocked) {
+      if (
+        (searchText === "" ||
+          p.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) &&
+        p.name !== ""
+      ) {
+        if (p.category !== lastCategory) {
+          rows.push(<ProductCategory category={p.category}></ProductCategory>);
+          lastCategory = p.category;
+        }
+        rows.push(<ProductRow product={p}></ProductRow>);
       }
-      rows.push(<ProductRow product={p}></ProductRow>);
     }
   });
 

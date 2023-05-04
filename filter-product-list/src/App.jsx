@@ -1,7 +1,7 @@
 import React from "react";
 import FilterableProductTable from "./component/filterableProductTable";
 
-const products = [
+const productList = [
   { category: "fruits", name: "banana", price: 80, isStocked: true },
   { category: "fruits", name: "orange", price: 70, isStocked: true },
   { category: "fruits", name: "pineapple", price: 200, isStocked: false },
@@ -11,7 +11,7 @@ const products = [
 ];
 
 const App = () => {
-  return <FilterableProductTable products={products} />;
+  return <FilterableProductTable products={productList} />;
 };
 
 export default App;
